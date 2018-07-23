@@ -41,12 +41,6 @@ public class LoginTest {
         loginPage.submitLogin();
     }
 
-    @Test
-    public static void quitTest(){
-            loginPage.quitPage();
-    }
-
-
     @AfterClass
     public static void tearDown(){
         driver.close();
