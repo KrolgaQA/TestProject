@@ -1,4 +1,4 @@
-package ru.uchi.Pages;
+package ru.uchi.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +20,15 @@ public class LoginPage {
     @FindBy(xpath = "//*[@id=\"intro\"]/form/input[2]")
     private WebElement buttonField;
 
+    @FindBy(xpath = "/html/body/section[1]/div/div/div/div[3]/div[2]/div")
+    private WebElement profileMenuField;
+
+    @FindBy(xpath = "/html/body/section[1]/div/div/div/div[3]/div[3]")
+    private WebElement selectField;
+
+    @FindBy(xpath = "/html/body/section[1]/div/div/div/div[3]/div[3]/div[4]/a")
+    private WebElement quitField;
+
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
@@ -38,6 +47,14 @@ public class LoginPage {
         buttonField.click();
     }
 
+    public void quitPage() {
+        if (profileMenuField.isDisplayed()) {
+            profileMenuField.click();
+            if (selectField.isDisplayed()) {
+                quitField.click();
+            }
+        }
+    }
 
 }
 

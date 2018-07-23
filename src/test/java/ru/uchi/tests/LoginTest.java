@@ -5,8 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import ru.uchi.Pages.LoginPage;
+import ru.uchi.pages.LoginPage;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class LoginTest {
@@ -24,16 +27,28 @@ public class LoginTest {
     }
 
     @Test
-    public static void loginTest(){
-        loginPage.typeUsername("pech@pech.pech");
-        loginPage.typePassword("123456");
+    public void loginTest() throws IOException {
+        FileInputStream fis = new FileInputStream("C:/Users/group/IdeaProjects/TestProject/login.properties");
+
+        Properties property = new Properties();
+        try {
+            property.load(fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        loginPage.typeUsername(property.getProperty("username"));
+        loginPage.typePassword(property.getProperty("password"));
         loginPage.submitLogin();
+    }
+
+    @Test
+    public static void quitTest(){
+            loginPage.quitPage();
     }
 
 
     @AfterClass
-    public static void driverQuit(){
-
+    public static void tearDown(){
         driver.close();
     }
 }
