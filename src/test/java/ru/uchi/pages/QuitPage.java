@@ -24,6 +24,7 @@ public class QuitPage {
 
     }
 
+    // TODO: 07.02.2019 testing github 
     public void quitPage() {
         if (profileMenuField.isDisplayed()) {
             profileMenuField.click();
