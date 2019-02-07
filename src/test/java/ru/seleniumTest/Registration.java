@@ -19,24 +19,34 @@ public class Registration {
 
         System.setProperty("webdriver.chrome.driver", "F:\\Project\\TestProject\\chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+
     }
 
     @Test
-    public void getRegistrationForm(){
-        driver.get(baseUrl);
+    public void getRegistrationFormWithValidValues(){
+        openMainPage();
+        fillRegistrationForm("test@test.test", "123456");
+        submitRegistration();
+    }
 
-        // TODO: 07.02.2019
-        //It doesn't work. Browser is closing earlier every time.
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-
-
-        driver.findElement(By.id("t1")).clear();
-        driver.findElement(By.id("t1")).sendKeys("test@test.test");
-        driver.findElement(By.name("password")).clear();
-        driver.findElement(By.name("password")).sendKeys("123456");
+    private void submitRegistration() {
         driver.findElement(By.className("btn-primary")).click();
     }
 
+    private void fillRegistrationForm(String login, String password) {
+        type("email", login);
+        type("password", password);
+    }
+
+    private void type(String locator, String fieldName) {
+        driver.findElement(By.name(locator)).clear();
+        driver.findElement(By.name(locator)).sendKeys(fieldName);
+    }
+
+    private void openMainPage() {
+        driver.get(baseUrl);
+    }
 
 
     @AfterClass
