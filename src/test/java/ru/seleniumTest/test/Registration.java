@@ -1,4 +1,4 @@
-package ru.seleniumTest;
+package ru.seleniumTest.test;
 
 import org.testng.annotations.Test;
 

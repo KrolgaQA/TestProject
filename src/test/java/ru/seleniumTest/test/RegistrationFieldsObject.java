@@ -1,4 +1,4 @@
-package ru.seleniumTest;
+package ru.seleniumTest.test;
 
 public class RegistrationFieldsObject {
     private final String login;
