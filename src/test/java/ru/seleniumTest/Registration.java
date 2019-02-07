@@ -25,8 +25,19 @@ public class Registration {
 
     @Test
     public void getRegistrationFormWithValidValues(){
+        RegistrationFieldsObject validRegistrationFieldsObject = new RegistrationFieldsObject("test@test.test", "123456");
+        fillRegistrationFields(validRegistrationFieldsObject);
+    }
+
+    @Test
+    public void getRegistrationFormWithEmptyValues(){
+        RegistrationFieldsObject emptyRegistrationFieldsObject = new RegistrationFieldsObject("", "");
+        fillRegistrationFields(emptyRegistrationFieldsObject);
+    }
+
+    private void fillRegistrationFields(RegistrationFieldsObject registrationFieldsObject) {
         openMainPage();
-        fillRegistrationForm("test@test.test", "123456");
+        fillRegistrationForm(registrationFieldsObject);
         submitRegistration();
     }
 
@@ -34,9 +45,9 @@ public class Registration {
         driver.findElement(By.className("btn-primary")).click();
     }
 
-    private void fillRegistrationForm(String login, String password) {
-        type("email", login);
-        type("password", password);
+    private void fillRegistrationForm(RegistrationFieldsObject registrationFieldsObject) {
+        type("email", registrationFieldsObject.getLogin());
+        type("password", registrationFieldsObject.getPassword());
     }
 
     private void type(String locator, String fieldName) {
