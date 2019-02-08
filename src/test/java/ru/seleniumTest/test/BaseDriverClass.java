@@ -5,16 +5,16 @@ import org.testng.annotations.BeforeTest;
 import ru.seleniumTest.framework.AppManager;
 
 public class BaseDriverClass {
-    protected static AppManager appManager;
+    protected static AppManager manager;
 
 
     @BeforeTest
     public static void setUp() {
-        appManager = new AppManager();
+        manager = new AppManager();
     }
 
     @AfterTest
     public void shutDown(){
-        appManager.stop();
+        manager.stop();
     }
 }

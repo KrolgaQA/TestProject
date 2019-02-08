@@ -1,33 +1,36 @@
 package ru.seleniumTest.framework;
 
-import org.openqa.selenium.WebDriver;
-
 public class AppManager {
 
     private WebDriverHandler webDriverHandler;
-    private RegistrationHandler registrationHandler;
+    private CartHandler cartHandler;
     private NavigationHandler navigationHandler;
-    private WebDriver driver;
-
-    public AppManager(){
-        webDriverHandler = new WebDriverHandler();
-        driver = webDriverHandler.getDriver();
-    }
 
     public void stop(){
-        webDriverHandler.stop();
+        if(webDriverHandler != null){
+            webDriverHandler.stop();
+        }
     }
 
-
-    public WebDriver getDriver() {
-        return driver;
+    protected WebDriverHandler getWebDriverHandler() {
+        if (webDriverHandler == null){
+            webDriverHandler = new WebDriverHandler(this);
+        }
+        return webDriverHandler;
     }
 
-    public RegistrationHandler getRegistrationHandler() {
-        return registrationHandler;
+    public CartHandler getCartHandler() {
+        if(cartHandler == null){
+            cartHandler = new CartHandler(this);
+        }
+        return cartHandler;
     }
 
     public NavigationHandler getNavigationHandler() {
+        if(navigationHandler == null){
+            navigationHandler = new NavigationHandler(this);
+        }
+
         return navigationHandler;
     }
 }

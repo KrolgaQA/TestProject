@@ -1,18 +1,13 @@
 package ru.seleniumTest.framework;
 
-import org.openqa.selenium.WebDriver;
+public class NavigationHandler extends BaseHandlerWithWebDriver{
 
-public class NavigationHandler {
-
-    AppManager manager;
-    WebDriver driver;
-
-    public NavigationHandler(AppManager manager){
-        this.manager =  manager;
-        driver = manager.getDriver();
+    public NavigationHandler(AppManager manager) {
+        super(manager);
     }
 
     public void openMainPage() {
-        driver.get("http://localhost:8080/registration-form.html");
+        // TODO: 08.02.2019 Add a check of current page
+        openURL("http://localhost:8080/bookstore/cart");
     }
 }
