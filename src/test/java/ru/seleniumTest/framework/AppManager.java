@@ -1,20 +1,42 @@
 package ru.seleniumTest.framework;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import ru.seleniumTest.test.RegistrationFieldsObject;
 
 public class AppManager {
-    private static WebDriver driver;
-    private static String baseUrl = "http://localhost:8080/registration-form.html";
+
+    private WebDriverHandler webDriverHandler;
+
     public AppManager(){
-        System.setProperty("webdriver.chrome.driver", "F:\\Project\\TestProject\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+        webDriverHandler = new WebDriverHandler();
     }
 
     public void stop(){
-        driver.close();
+        webDriverHandler.stop();
+    }
+    
+    
+    public void fillRegistrationFields(RegistrationFieldsObject registrationFieldsObject) {
+        openMainPage();
+        fillRegistrationForm(registrationFieldsObject);
+        submitRegistration();
+    }
+
+    private void submitRegistration() {
+        driver.findElement(By.className("btn-primary")).click();
+    }
+
+    private void fillRegistrationForm(RegistrationFieldsObject registrationFieldsObject) {
+        type("email", registrationFieldsObject.getLogin());
+        type("password", registrationFieldsObject.getPassword());
+    }
+
+    private void type(String locator, String fieldName) {
+        driver.findElement(By.name(locator)).clear();
+        driver.findElement(By.name(locator)).sendKeys(fieldName);
+    }
+
+    private void openMainPage() {
+        driver.get(baseUrl);
     }
 }

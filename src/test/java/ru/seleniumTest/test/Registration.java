@@ -7,13 +7,13 @@ public class Registration extends BaseDriverClass {
     @Test
     public void getRegistrationFormWithValidValues(){
         RegistrationFieldsObject validRegistrationFieldsObject = new RegistrationFieldsObject("test@test.test", "123456");
-        fillRegistrationFields(validRegistrationFieldsObject);
+        appManager.fillRegistrationFields(validRegistrationFieldsObject);
     }
 
     @Test
     public void getRegistrationFormWithEmptyValues(){
         RegistrationFieldsObject emptyRegistrationFieldsObject = new RegistrationFieldsObject("", "");
-        fillRegistrationFields(emptyRegistrationFieldsObject);
+        appManager.fillRegistrationFields(emptyRegistrationFieldsObject);
     }
 
 
