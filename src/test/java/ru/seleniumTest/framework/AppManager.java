@@ -1,42 +1,33 @@
 package ru.seleniumTest.framework;
 
-import org.openqa.selenium.By;
-import ru.seleniumTest.test.RegistrationFieldsObject;
+import org.openqa.selenium.WebDriver;
 
 public class AppManager {
 
     private WebDriverHandler webDriverHandler;
+    private RegistrationHandler registrationHandler;
+    private NavigationHandler navigationHandler;
+    private WebDriver driver;
 
     public AppManager(){
         webDriverHandler = new WebDriverHandler();
+        driver = webDriverHandler.getDriver();
     }
 
     public void stop(){
         webDriverHandler.stop();
     }
-    
-    
-    public void fillRegistrationFields(RegistrationFieldsObject registrationFieldsObject) {
-        openMainPage();
-        fillRegistrationForm(registrationFieldsObject);
-        submitRegistration();
+
+
+    public WebDriver getDriver() {
+        return driver;
     }
 
-    private void submitRegistration() {
-        driver.findElement(By.className("btn-primary")).click();
+    public RegistrationHandler getRegistrationHandler() {
+        return registrationHandler;
     }
 
-    private void fillRegistrationForm(RegistrationFieldsObject registrationFieldsObject) {
-        type("email", registrationFieldsObject.getLogin());
-        type("password", registrationFieldsObject.getPassword());
-    }
-
-    private void type(String locator, String fieldName) {
-        driver.findElement(By.name(locator)).clear();
-        driver.findElement(By.name(locator)).sendKeys(fieldName);
-    }
-
-    private void openMainPage() {
-        driver.get(baseUrl);
+    public NavigationHandler getNavigationHandler() {
+        return navigationHandler;
     }
 }

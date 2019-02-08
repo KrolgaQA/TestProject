@@ -7,13 +7,13 @@ public class CopyRegistration extends BaseDriverClass {
     @Test
     public void getRegistrationFormWithValidValues(){
         RegistrationFieldsObject validRegistrationFieldsObject = new RegistrationFieldsObject("test@test.test", "123456");
-        appManager.fillRegistrationFields(validRegistrationFieldsObject);
+        appManager.getRegistrationHandler().fillRegistrationFields(validRegistrationFieldsObject);
     }
 
     @Test
     public void getRegistrationFormWithEmptyValues(){
         RegistrationFieldsObject emptyRegistrationFieldsObject = new RegistrationFieldsObject("", "");
-        appManager.fillRegistrationFields(emptyRegistrationFieldsObject);
+        appManager.getRegistrationHandler().fillRegistrationFields(emptyRegistrationFieldsObject);
     }
 
 

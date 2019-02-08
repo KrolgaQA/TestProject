@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverHandler {
     private static WebDriver driver;
-    private static String baseUrl = "http://localhost:8080/registration-form.html";
 
     public WebDriverHandler(){
         System.setProperty("webdriver.chrome.driver", "F:\\Project\\TestProject\\chromedriver.exe");
@@ -17,5 +16,9 @@ public class WebDriverHandler {
 
     public void stop(){
         driver.close();
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 }
