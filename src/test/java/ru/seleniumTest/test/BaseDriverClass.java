@@ -9,8 +9,8 @@ public class BaseDriverClass {
 
 
     @BeforeTest
-    public static void setUp() {
-        manager = new AppManager();
+    public void setUp() {
+        manager = AppManager.getInstance();
     }
 
     @AfterTest
