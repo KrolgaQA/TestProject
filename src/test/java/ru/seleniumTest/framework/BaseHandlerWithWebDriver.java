@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class BaseHandlerWithWebDriver {
     protected final AppManager manager;
-    protected WebDriver driver;
+    private WebDriver driver;
 
     public BaseHandlerWithWebDriver(AppManager manager){
         this.manager =  manager;
@@ -15,11 +15,6 @@ public class BaseHandlerWithWebDriver {
 
     protected void click(By className) {
         findElement(className).click();
-    }
-
-    protected void type(String locator, String fieldName) {
-        findElement(By.name(locator)).clear();
-        findElement(By.name(locator)).sendKeys(fieldName);
     }
 
     protected WebElement findElement(By name) {
@@ -38,5 +33,10 @@ public class BaseHandlerWithWebDriver {
     // TODO: 08.02.2019 Finish it when will know how to chaining tests and test's results
     public void addBookToTheCart() {
 
+    }
+
+    protected void type(String locator, String fieldName) {
+        findElement(By.id(locator)).clear();
+        findElement(By.id(locator)).sendKeys(fieldName);
     }
 }

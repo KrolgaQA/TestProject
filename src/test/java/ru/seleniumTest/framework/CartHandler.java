@@ -11,13 +11,13 @@ public class CartHandler extends BaseHandlerWithWebDriver{
     }
 
     public void fillSearchFields(SearchFieldObject searchFieldObject) {
-        manager.getNavigationHandler().openMainPage();
+//        manager.getNavigationHandler().openMainPage();
         fillSerchForm(searchFieldObject);
         submitSearch();
     }
 
     public void fillBillingFormFields(BillingFormObject billingFormObject){
-        manager.getNavigationHandler().openMainPage();
+//        manager.getNavigationHandler().openMainPage();
         fillBillingForm(billingFormObject);
         submitItem();
     }
@@ -32,11 +32,6 @@ public class CartHandler extends BaseHandlerWithWebDriver{
 
     private void fillSerchForm(SearchFieldObject searchFieldObject) {
         type("navbar-search", searchFieldObject.getSearchTextField());
-    }
-
-    protected void type(String locator, String fieldName) {
-        driver.findElement(By.id(locator)).clear();
-        driver.findElement(By.id(locator)).sendKeys(fieldName);
     }
 
     public void fillBillingForm(BillingFormObject billingFormObject) {

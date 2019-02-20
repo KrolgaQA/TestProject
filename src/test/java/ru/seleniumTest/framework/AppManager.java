@@ -3,7 +3,6 @@ package ru.seleniumTest.framework;
 public class AppManager {
 
     private static AppManager appManager;
-//    public static final AppManager INSTANCE = new AppManager();
     private WebDriverHandler webDriverHandler;
     private CartHandler cartHandler;
     private NavigationHandler navigationHandler;

@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverHandler {
     private static WebDriver driver;
-    public final AppManager manager;
+    private final AppManager manager;
 
     public WebDriverHandler(AppManager manager){
         this.manager = manager;
