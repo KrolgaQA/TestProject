@@ -11,9 +11,9 @@ public class WebDriverHandler {
 
     public WebDriverHandler(AppManager manager){
         this.manager = manager;
-        System.setProperty("webdriver.chrome.driver", "F:\\Project\\TestProject\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Krasilnikova\\Desktop\\CV\\chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
         driver.get("http://localhost:8080/bookstore/cart");
     }
 

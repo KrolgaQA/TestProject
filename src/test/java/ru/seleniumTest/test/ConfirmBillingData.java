@@ -4,8 +4,8 @@ import org.testng.annotations.Test;
 
 public class ConfirmBillingData extends BaseDriverClass{
 
-    @Test
-    public void confirmItem(){
+    @Test(timeOut = 100000)
+    public void confirmItem() throws InterruptedException {
         BillingFormObject validDataBillingFormObject = new BillingFormObject(
                 "Name",
                 "Surname",
@@ -15,5 +15,6 @@ public class ConfirmBillingData extends BaseDriverClass{
                 "Street",
                 "123456");
         manager.getCartHandler().fillBillingFormFields(validDataBillingFormObject);
+        Thread.sleep(2000);
     }
 }
